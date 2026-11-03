@@ -302,18 +302,18 @@ VisualsTab:CreateToggle({
         if value then
             startNPCScan()
         else
-            for model in pairs(NPCHighlightCache) do
-                if NPCHighlightCache[model] then
-                    NPCHighlightCache[model]:Destroy()
-                    NPCHighlightCache[model] = nil
+            for model, highlight in pairs(NPCHighlightCache) do
+                if highlight then
+                    highlight:Destroy()
                 end
+                NPCHighlightCache[model] = nil
             end
 
-            for model in pairs(NPCInfoCache) do
-                if NPCInfoCache[model] then
-                    NPCInfoCache[model]:Destroy()
-                    NPCInfoCache[model] = nil
+            for model, billboard in pairs(NPCInfoCache) do
+                if billboard then
+                    billboard:Destroy()
                 end
+                NPCInfoCache[model] = nil
             end
 
             stopNPCScan()
